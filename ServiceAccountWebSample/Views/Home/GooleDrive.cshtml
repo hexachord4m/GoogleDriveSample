@@ -1,0 +1,27 @@
+﻿@model ServiceAccountWebSample.Models.GoogleDriveModel
+
+@{
+    ViewBag.Title = "Googleドライブ";
+}
+<h2>@ViewBag.Title</h2>
+<h4>@ViewBag.Message</h4>
+
+@using (Html.BeginForm("GoogleDrive", null, FormMethod.Post))
+{
+    フォルダ名: Html.TextBoxFor(m => m.FolderName);
+    <input type="submit" value="検索" class="btn btn-primary" />
+}
+
+@if (Model.FileDataList != null && Model.FileDataList.Count > 0)
+{
+    <div class="table-responsive">
+        <table id="table" class="table">
+            <thead>
+                <tr>
+                    <th data-field="name" data-sortable="true">Name</th>
+                    <th data-field="id" data-sortable="true">Id</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+}

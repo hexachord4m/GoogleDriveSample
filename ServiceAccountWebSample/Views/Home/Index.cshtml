@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "認証情報設定";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>認証情報ファイルアップロード</p>
+
+@using (Html.BeginForm("UploadFile", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="dataFile" />
+    <input type="submit" value="登録" />
+}
