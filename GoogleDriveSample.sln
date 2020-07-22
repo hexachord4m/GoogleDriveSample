@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthConsoleSample", "OAuth
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceAccountWebSample", "ServiceAccountWebSample\ServiceAccountWebSample.csproj", "{BC8CB149-90EE-4AC5-A39C-1444472FC836}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthWebSample", "OAuthWebSample\OAuthWebSample.csproj", "{91F6D317-550C-4FD4-8191-1C1E0CC853A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BC8CB149-90EE-4AC5-A39C-1444472FC836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC8CB149-90EE-4AC5-A39C-1444472FC836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC8CB149-90EE-4AC5-A39C-1444472FC836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F6D317-550C-4FD4-8191-1C1E0CC853A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F6D317-550C-4FD4-8191-1C1E0CC853A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F6D317-550C-4FD4-8191-1C1E0CC853A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F6D317-550C-4FD4-8191-1C1E0CC853A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

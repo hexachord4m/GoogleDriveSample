@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/ServiceAccountWebSample/Client/credentials.json
+/ServiceAccountConsoleSample/credential.json
+/OAuthConsoleSample/credential.json

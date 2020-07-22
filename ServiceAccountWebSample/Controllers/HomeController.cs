@@ -10,6 +10,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ServiceAccountWebSample.Models;
+using System.Web.Hosting;
 
 namespace ServiceAccountWebSample.Controllers
 {
@@ -23,26 +24,20 @@ namespace ServiceAccountWebSample.Controllers
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileWrapper dataFile)
         {
-            string credentialFilePath = "credentials.json";
+            string credentialFilePath = HostingEnvironment.MapPath("~/Client/credentials.json");
 
             // 認証ファイル保存
             dataFile.SaveAs(credentialFilePath);
 
-            ViewBag.Message = "登録しました。";
+            ViewBag.Message = "登録しました";
 
             return View("Index");
         }
 
-        public ActionResult GooleDrive()
-        {
-            return View();
-        }
-
-        [HttpPost]
         public ActionResult GooleDrive(GoogleDriveModel model)
         {
             ICredential credential;
-            string credentialFilePath = ConfigurationManager.AppSettings["ClientDir"] + "credentials.json";
+            string credentialFilePath = HostingEnvironment.MapPath("~/Client/credentials.json");
 
             using (var stream = new FileStream(credentialFilePath, FileMode.Open, FileAccess.Read))
             {
@@ -58,39 +53,27 @@ namespace ServiceAccountWebSample.Controllers
             });
 
             // Define parameters of request.
-            StringBuilder sb = new StringBuilder();
-
             FilesResource.ListRequest listRequest = service.Files.List();
             listRequest.PageSize = 10;
             listRequest.Fields = "nextPageToken, files(id, name)";
 
             // List files.
-            IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
-                .Files;
-            Console.WriteLine("Files:");
+            var files = listRequest.Execute().Files;
             if (files != null && files.Count > 0)
             {
                 foreach (var file in files)
                 {
-                    sb.AppendFormat("{0} ({1})", file.Name, file.Id);
-                    sb.AppendLine();
-                    //Console.WriteLine("{0} ({1})", file.Name, file.Id);
+                    var fileData = new FileData() { Name = file.Name, Id = file.Id };
+                    model.FileDataList.Add(fileData);
                 }
             }
-            else
-            {
-                sb.AppendLine("No files found.");
-                //Console.WriteLine("No files found.");
-            }
 
-            ViewBag.Message = sb.ToString();
-
-            return View();
+            return View(model);
         }
 
         public ActionResult Gmail()
         {
-            ViewBag.Message = "認証してください。";
+            ViewBag.Message = "認証してください";
 
             return View();
         }

@@ -10,7 +10,7 @@
 
 <p>認証情報ファイルアップロード</p>
 
-@using (Html.BeginForm("UploadFile", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("AuthAsync", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-group">
         <input type="file" name="dataFile" id="inputFile">
