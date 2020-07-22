@@ -20,10 +20,18 @@ namespace OAuthWebSample.Controllers
     {
         public async Task<ActionResult> Index(CancellationToken cancellationToken)
         {
-            var result = await new AuthorizationCodeMvcApp(this, new AppFlowMetadata() { ApplicationPath = Request.ApplicationPath }).AuthorizeAsync(cancellationToken);
-            if (result.Credential != null)
+            string credentialFilePath = HostingEnvironment.MapPath("~/Client/credentials.json");
+            if (System.IO.File.Exists(credentialFilePath))
             {
-                ViewBag.Message = "認証済み クライアントID:" + ((AuthorizationCodeFlow)result.Credential.Flow).ClientSecrets.ClientId;
+                var result = await new AuthorizationCodeMvcApp(this, new AppFlowMetadata() { ApplicationPath = Request.ApplicationPath }).AuthorizeAsync(cancellationToken);
+                if (result.Credential != null)
+                {
+                    ViewBag.Message = "認証済み クライアントID:" + ((AuthorizationCodeFlow)result.Credential.Flow).ClientSecrets.ClientId;
+                }
+                else
+                {
+                    ViewBag.Message = "未認証";
+                }
             }
             else
             {

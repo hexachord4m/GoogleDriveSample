@@ -341,3 +341,5 @@ healthchecksdb
 /ServiceAccountWebSample/Client/credentials.json
 /ServiceAccountConsoleSample/credential.json
 /OAuthConsoleSample/credential.json
+/OAuthWebSample/Client/credentials.json
+/OAuthWebSample/Client/token.json/Google.Apis.Auth.OAuth2.Responses.TokenResponse-user
